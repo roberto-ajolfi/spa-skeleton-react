@@ -1,9 +1,67 @@
-# Single Page Application Skeleton in React
-This project is intende to be used as part of the ReactJS class. It was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Single Page Application Skeleton (in React)
+Questo progetto è parte del corso di ReactJS e il suo utilizzo è a solo scopo didattico.
+Per crearlo è stato utilizzzata la CLI [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Attività da svolgere
+1. Aggiungere la list view con l'elenco dei Tickets
+	- Open New Ticket (button)
+	- Edit / Delete del singolo Ticket
 
-In the project directory, you can run:
+2. Aggiungere la form di inserimento nuovo Ticket
+
+3. Aggiungere la form di modifica di un Ticket esistente
+
+4. Aggiungere la cancellazione di un Ticket
+
+*Tutte le funzionalità dovranno utilizzare un servizio che 
+implementa le funzionalità CRUD (GET, POST, PUT, DELETE) 
+comunicando con le REST API disponibili all'URL indicato 
+nella documentazione.*
+
+
+# Documentazione
+## Accesso al servizio REST
+**URL:** https://icticketing.azurewebsites.net/api/ticketanon
+
+**Come specificare HTTP Verb, Body e Headers nelle chiamate HTTP**
+```
+const promise = await fetch(this.apiURL, { 
+                method: 'POST',
+                headers: this.basicHeaders,
+                body: JSON.stringify(ticket)
+            });
+```
+
+## Form di Creazione Ticket
+**Campi**
+- *Title* (testo)
+- *Description* (testo multi linea)
+- *Category* (combo)
+    - Unknown (valore = 1)
+    - Development (2)
+    - System (3)
+- *Priority* (combo)
+    - Low (valore = 1)
+    - Normal (2)
+    - High (3)
+
+## Form di Modifica Ticket
+**Campi**
+- *Title* (testo)
+- *Description* (testo multi linea)
+- *Category* (combo, valori come sopra)
+- *Priority* (combo, valori come sopra)
+- *State* (combo)
+    - New (valore = 1)
+    - On Going (2)
+    - Close (3)
+
+## Nota sul modello Ticket
+Nella cartella Models è presente una classe Ticket, 
+da utilizzarsi per il popolamento della vista tabellare (punto 1).
+Questo modello NON è adatto per il salvataggio di un nuovo Ticket / Ticket modificato.
+
+## Script disponibili
 
 ### `npm start`
 
@@ -12,11 +70,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
 
@@ -27,19 +80,3 @@ The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
