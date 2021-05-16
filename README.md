@@ -21,15 +21,27 @@ nella documentazione.*
 
 # Documentazione
 ## Accesso al servizio REST
-**URL:** https://icticketing.azurewebsites.net/api/ticketanon
+**URL (Anonymous):** https://icticketing.azurewebsites.net/api/ticketanon
+
+**URL (Basic):** https://icticketing.azurewebsites.net/api/ticket
 
 **Come specificare HTTP Verb, Body e Headers nelle chiamate HTTP**
-```
+```ts
+basicAuthAccount: string = "guest1:Gu&st!";  // user:password
+
+// "Accept" e "Content-Type" sono NECESSARI per le richieste PUT e POST
+// "Authorization" serve se si usa il servizio con Basic authentication
+basicHeaders: Headers = new Headers({
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Basic " + btoa(this.basicAuthAccount)
+});
+
 const promise = await fetch(this.apiURL, { 
-                method: 'POST',
-                headers: this.basicHeaders,
-                body: JSON.stringify(ticket)
-            });
+    method: 'POST',
+    headers: this.basicHeaders,
+    body: JSON.stringify(ticket)
+});
 ```
 
 ## Form di Creazione Ticket
